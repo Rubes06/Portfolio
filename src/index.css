@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=DM+Sans:wght@400;500&display=swap");
+
+:root {
+  --bg: #121634;
+  --ink: #edebff;
+  --muted: #a7a5cf;
+  --violet: #7c5cff;
+  --sun: #ffd23f;
+  --display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --body: "DM Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font: 400 1.05rem/1.6 var(--body); overflow-x: hidden; }
+main { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+h1, h2, h3 { font-family: var(--display); letter-spacing: -0.02em; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 4px; }
+
+.progress { position: fixed; inset: 0 0 auto 0; height: 4px; background: var(--sun); transform-origin: 0 50%; z-index: 20; }
+.glow { position: fixed; top: -250px; left: -250px; width: 500px; height: 500px; border-radius: 50%; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.35), transparent 65%); }
+main { position: relative; z-index: 1; }
+
+.hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding: 4rem 0; }
+.hero h1 { font-size: clamp(3.4rem, 13vw, 10rem); font-weight: 800; line-height: 0.95; }
+.letter { display: inline-block; overflow: hidden; padding: 0.1em 0; vertical-align: top; }
+.role { font: 600 clamp(1.2rem, 3vw, 1.8rem)/1.2 var(--display); color: var(--sun); margin-top: 1.5rem; }
+.intro { max-width: 52ch; color: var(--muted); margin-top: 1rem; }
+
+.marquee { overflow: hidden; border-block: 2px solid var(--violet); margin: 0 -1.5rem; padding: 1rem 0; }
+.track { display: flex; gap: 3rem; width: max-content; animation: slide 28s linear infinite; }
+.track span { font: 700 2rem var(--display); white-space: nowrap; }
+.track span:nth-child(even) { color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+.projects, .about { padding: 7rem 0 0; }
+h2 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 2rem; }
+.row { position: relative; display: block; overflow: hidden; border-top: 1px solid rgba(237, 235, 255, 0.2); }
+.row:last-child { border-bottom: 1px solid rgba(237, 235, 255, 0.2); }
+.fill { position: absolute; inset: 0; background: var(--violet); transform-origin: bottom; }
+.rowin { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; padding: 1.75rem 0; }
+.year { color: var(--muted); }
+.meta h3 { font-size: clamp(1.6rem, 4vw, 2.6rem); }
+.meta p { color: var(--muted); max-width: 55ch; }
+.row:hover .meta p, .row:focus-visible .meta p, .row:hover .year, .row:focus-visible .year { color: var(--ink); }
+.meta ul { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin-top: 0.6rem; }
+.meta li { border: 1px solid currentColor; border-radius: 999px; padding: 0 0.8rem; font-size: 0.85rem; }
+
+.about p { max-width: 60ch; font-size: 1.25rem; }
+.contact { padding: 8rem 0 4rem; }
+.contact h2 { font-size: clamp(2.6rem, 9vw, 6rem); font-weight: 800; }
+.mail { display: inline-flex; gap: 0.8rem; align-items: center; font: 600 clamp(1.1rem, 3vw, 1.8rem) var(--display); border-bottom: 3px solid var(--sun); }
+.actions { display: flex; gap: 1rem; align-items: center; margin-top: 2rem; }
+.actions button, .actions a { display: inline-flex; gap: 0.5rem; align-items: center; background: transparent; color: var(--ink);
+  border: 1.5px solid var(--ink); border-radius: 999px; padding: 0.6rem 1.1rem; font: 500 1rem var(--body); cursor: pointer; transition: background 0.2s, color 0.2s; }
+.actions button:hover, .actions a:hover { background: var(--sun); color: var(--bg); border-color: var(--sun); }
+
+@media (max-width: 640px) { .rowin { grid-template-columns: 1fr auto; } .year { display: none; } }
+@media (prefers-reduced-motion: reduce) { .track { animation: none; } html { scroll-behavior: auto; } }
